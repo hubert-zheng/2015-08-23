@@ -6,7 +6,7 @@
 <html>
 <head>
  <title>index</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
     <!--<link rel="stylesheet" href="bootstrap.min.css">-->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
@@ -56,9 +56,11 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="newbtn"><button class="btn btn-primary ">新建</button></span>
             </p>
-           
-            <div class="usertable col-md-12">
-                <table class="table table-bordered">
+        </div>
+        
+        <!-- 主体内容 -->
+                    <div class="usertable col-md-12">
+                <table class="table table-bordered col-md-12">
                     <th>操作</th>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -68,17 +70,18 @@
                     <th>lastupdate</th>
                     <%
                     ArrayList<Customer> cuslist =(ArrayList)request.getAttribute("cuslist"); 
-                    	for(int i = 0 ; i < cuslist.size();i++){
+                    
+                    for(int i = 0 ; i < cuslist.size();i++){
                     
                     %>
                     <tr>
-                        <td><a>编辑</a>|<a>删除</a></td>
-                        <td><%=cuslist.get(i).getFirst_Name()%></td>
-                        <td><%=cuslist.get(i).getLast_Name()%></td>
-                        <td><%=cuslist.get(i).getAddress() %></td>
-                        <td><%=cuslist.get(i).getEmail() %></td>
-                        <td><%=cuslist.get(i).getCustomer_id() %></td>
-                        <td><%=cuslist.get(i).getLastUpdate() %></td>
+                        <td class="col-md-1"><a>编辑</a>|<a>删除</a></td>
+                        <td class="col-md-1"><%=cuslist.get(i).getFirst_Name()%></td>
+                        <td class="col-md-1"><%=cuslist.get(i).getLast_Name()%></td>
+                        <td class="col-md-3"><%=cuslist.get(i).getAddress() %></td>
+                        <td class="col-md-3"><%=cuslist.get(i).getEmail() %></td>
+                        <td class="col-md-1"><%=cuslist.get(i).getCustomer_id() %></td>
+                        <td class="col-md-1"><%=cuslist.get(i).getLastUpdate() %></td>
                     </tr>
                     <%	
 					}
@@ -86,27 +89,36 @@
                 </table>
                 <!-- 分页 -->
                 <div class="fenye">
-
                     <ul class="pagination">
+                    <%
+					String paging = (String)request.getAttribute("paging");
+                    int countpage = Integer.valueOf(paging)/10;
+					%>
                         <li>
                             <a href="#" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
+                        <%for(int i=1;i<countpage;i++){ %>
+                        <li><a id="paging<%=i%>" href="#"><%=i%></a></li>
+                         <% }%>
                         <li>
                             <a href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
+                       
                     </ul>
+                    
                 </div>
             </div>
-        </div>
+        
     </div>
 </div>
-	
+<script src="JS/jquery-2.1.4.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script src="JS/jquery-ui.min.js"></script>
+<script src="JS/jPaginator-min.js"></script>
+<script src="JS/myjs.js"></script>
 </body>
 </html>

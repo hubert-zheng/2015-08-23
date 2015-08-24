@@ -24,7 +24,7 @@ public class LoginCheckServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 6447580429268429387L;
-	private CheckUserLogin cku = new CheckUserLogin();
+	//private CheckUserLogin cku = new CheckUserLogin();
 	private CustomerService csc = new CustomerService();
 	
 	@Override
@@ -59,6 +59,7 @@ public class LoginCheckServlet extends HttpServlet {
 			 String cuscount=csc.getCustomerCount();
 			 Gson gson = new Gson();
 			 String json = gson.toJson(cuslist);
+			// System.out.println("页数："+cuscount);
 			 if(bool){
 				 //登录成功 
 				 forward = "/index.jsp";
@@ -66,6 +67,7 @@ public class LoginCheckServlet extends HttpServlet {
 				 req.getSession().setAttribute("flag", "success");
 				 req.setAttribute("cuslist", json);
 				 req.setAttribute("cuslist", cuslist);
+				 req.setAttribute("paging", cuscount);
 				 System.out.println("登录成功");
 			 }
 			 else{
