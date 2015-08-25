@@ -77,6 +77,15 @@
 		<servlet-name>EditServlet</servlet-name>
 		<servlet-class>com.hand.servlet.EditServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GetCusListServlet</servlet-name>
+		<servlet-class>com.hand.servlet.GetCusListServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GetCusListServlet</servlet-name>
+		<url-pattern>/GetCusListServlet</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>EditServlet</servlet-name>
 		<url-pattern>/EditServlet</url-pattern>

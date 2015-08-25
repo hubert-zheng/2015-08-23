@@ -59,7 +59,7 @@
         </div>
         
         <!-- 主体内容 -->
-                    <div class="usertable col-md-12">
+              <div class="usertable col-md-12">
                 <table class="table table-bordered col-md-12">
                     <th>操作</th>
                     <th>First Name</th>
@@ -70,18 +70,17 @@
                     <th>lastupdate</th>
                     <%
                     ArrayList<Customer> cuslist =(ArrayList)request.getAttribute("cuslist"); 
-                    
                     for(int i = 0 ; i < cuslist.size();i++){
                     
                     %>
                     <tr>
-                        <td class="col-md-1"><a>编辑</a>|<a>删除</a></td>
-                        <td class="col-md-1"><%=cuslist.get(i).getFirst_Name()%></td>
-                        <td class="col-md-1"><%=cuslist.get(i).getLast_Name()%></td>
-                        <td class="col-md-3"><%=cuslist.get(i).getAddress() %></td>
-                        <td class="col-md-3"><%=cuslist.get(i).getEmail() %></td>
-                        <td class="col-md-1"><%=cuslist.get(i).getCustomer_id() %></td>
-                        <td class="col-md-1"><%=cuslist.get(i).getLastUpdate() %></td>
+                        <td><a>编辑</a>|<a>删除</a></td>
+                        <td><%=cuslist.get(i).getFirst_Name()%></td>
+                        <td><%=cuslist.get(i).getLast_Name()%></td>
+                        <td><%=cuslist.get(i).getAddress() %></td>
+                        <td><%=cuslist.get(i).getEmail() %></td>
+                        <td><%=cuslist.get(i).getCustomer_id() %></td>
+                        <td><%=cuslist.get(i).getLastUpdate() %></td>
                     </tr>
                     <%	
 					}
@@ -95,21 +94,23 @@
                     int countpage = Integer.valueOf(paging)/10;
 					%>
                         <li>
-                            <a href="#" aria-label="Previous">
+                        	
+                            <a class="last_page" href="#" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
                         <%for(int i=1;i<countpage;i++){ %>
-                        <li><a id="paging<%=i%>" href="#"><%=i%></a></li>
+                        <li><a id="<%=i%>" href="#" class="paging"><%=i%></a></li>
                          <% }%>
                         <li>
-                            <a href="#" aria-label="Next">
+                            <a class="next_page" href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
                        
                     </ul>
-                    
+	                    
+
                 </div>
             </div>
         
@@ -120,5 +121,53 @@
 <script src="JS/jquery-ui.min.js"></script>
 <script src="JS/jPaginator-min.js"></script>
 <script src="JS/myjs.js"></script>
+<script type="text/javascript">
+/*
+$(document).ready(function(){
+	//分页栏的点击事件
+	$(".fenye").find("a").click(function(){
+		var page_num = $(this).text();
+		console.log(page_num);
+		//var test = <%=request.getContextPath()%>+"/GetCusListServlet";
+		//拼接url
+		 <%
+		 String path = request.getContextPath();
+		 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/GetCusListServlet?pagestart=";
+		 %>
+		var urlpage = <%=basePath%>;
+		//console.log(<%=basePath%>);
+		$.ajax({
+			url:urlpage+page_num,
+			dataType:'json',
+			error:function(){console.log("ajax,error!")},
+			success:function(json)
+			{
+				console.log(json);
+				var json_obj = JSON.parse(json);
+				if (json_obj.length) {
+					//遍历
+					var str ="";
+					$.each(json_obj,function(index,array){
+						//将数据插入到表格中
+						str = '<tr>';
+						str += '<td><a>编辑</a>|<a>删除</a></td>';
+						str += '<td>'+array.Fisrt_Name+'</td>';
+						str += '<td>'+array.Last_Name+'</td>';
+						str += '<td>'+array.Address+'</td>';
+						str += '<td>'+array.Email+'</td>';
+						str += '<td>'+array.LastUpdate+'</td>';
+						str += '</tr>';
+						$("table").empty();
+						$("table").append(str);
+					});
+				}
+			
+			}
+		});
+	});
+	
+})
+*/
+</script>
 </body>
 </html>

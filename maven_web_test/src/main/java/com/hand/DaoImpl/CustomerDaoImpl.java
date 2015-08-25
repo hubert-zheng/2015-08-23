@@ -12,11 +12,17 @@ public class CustomerDaoImpl implements CustomerDao{
 
 	public ResultSet getcustomerlist(Connection conn) throws SQLException {
 		
-		PreparedStatement ps = conn.prepareStatement("SELECT cus.customer_id,cus.first_name,cus.last_name,cus.email,cus.last_update,ad.address FROM customer cus left join address ad on ad.address_id=cus.address_id;");
-
+		PreparedStatement ps = conn.prepareStatement("SELECT cus.customer_id,cus.first_name,cus.last_name,cus.email,cus.last_update,ad.address FROM customer cus left join address ad on ad.address_id=cus.address_id limit 0,10;");
+		return ps.executeQuery();
+	}
+	public ResultSet getCustomerListStart(Connection conn,int start) throws SQLException{
+		PreparedStatement ps = conn.prepareStatement("SELECT cus.customer_id,cus.first_name,cus.last_name,cus.email,cus.last_update,ad.address FROM customer cus left join address ad on ad.address_id=cus.address_id limit ?,?;");
+		ps.setInt(1, start);
+		ps.setInt(2, 10);
 		return ps.executeQuery();
 		
 	}
+	
 	public ResultSet getcustomercount(Connection conn)throws SQLException{
 		PreparedStatement ps = conn.prepareStatement("select count(customer_id) from customer;");
 		return ps.executeQuery();

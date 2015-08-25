@@ -13,4 +13,6 @@ public interface CustomerDao {
 	//public ResultSet getcustomerlist(Connection conn,int start,int finish)throws SQLException;
 	public ResultSet getcustomerlist(Connection conn)throws SQLException;
 	public ResultSet getcustomercount(Connection conn)throws SQLException;
+
+	public ResultSet getCustomerListStart(Connection conn,int start)throws SQLException;
 }

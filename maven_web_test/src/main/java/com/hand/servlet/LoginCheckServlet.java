@@ -57,15 +57,14 @@ public class LoginCheckServlet extends HttpServlet {
 			// System.out.println("checkuser:"+bool);
 			 ArrayList<Customer> cuslist = csc.getCustomerList();
 			 String cuscount=csc.getCustomerCount();
-			 Gson gson = new Gson();
-			 String json = gson.toJson(cuslist);
-			// System.out.println("页数："+cuscount);
+
+			//System.out.println("页数："+cuscount);
 			 if(bool){
 				 //登录成功 
 				 forward = "/index.jsp";
 				 req.getSession().setAttribute ("msg", "login");
 				 req.getSession().setAttribute("flag", "success");
-				 req.setAttribute("cuslist", json);
+				 //req.setAttribute("cuslist", json);
 				 req.setAttribute("cuslist", cuslist);
 				 req.setAttribute("paging", cuscount);
 				 System.out.println("登录成功");
