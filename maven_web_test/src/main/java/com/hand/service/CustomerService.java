@@ -150,7 +150,34 @@ public class CustomerService {
 		return cuslist;
 		
 	}
-	
+	//删除指定的客户信息
+	public boolean delCus(Customer cus){
+		boolean bool = false;
+		try {
+			conn = ConnectionFactory.getInstance ().makeConnection ();
+			conn.setAutoCommit (false) ;
+			bool =  cusdao.deleteCusWithPayment(conn, cus);
+			bool = cusdao.deleteCusWithRental(conn, cus);
+			bool = cusdao.deleteCustomer(conn, cus);
+
+		} catch (SQLException e) {
+			e.printStackTrace ();
+			try {
+				conn.rollback ();
+			} catch (SQLException e1) {
+				e1.printStackTrace ();
+			}
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace ();
+			}
+		}
+		
+		
+		return bool;
+	}
 	
 	
 }

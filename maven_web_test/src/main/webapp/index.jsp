@@ -13,12 +13,18 @@
 <body>
 	<div>
 <div class="logo">8814郑晓彬
-    <div class="userenter">
-        <button type="button" class="btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        </button>
-        User
-    </div>
+
+    <!-- Single button -->
+	<div class="btn-group userenter">
+  		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    		User<span class="glyphicon glyphicon-user"></span> <span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu">
+    		<li role="separator" class="divider"></li>
+    		<li><a href="<%=request.getContextPath()%>/LoginCheckServlet">Logout</a></li>
+ 		 </ul>
+	</div>
+    
 </div>
 
 
@@ -54,7 +60,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="newbtn"><button class="btn btn-primary ">新建</button></span>
+                <a class="btn btn-primary" role="button" href="filmindex.jsp">新建</a>
             </p>
         </div>
         

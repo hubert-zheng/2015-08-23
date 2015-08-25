@@ -81,7 +81,15 @@
 		<servlet-name>GetCusListServlet</servlet-name>
 		<servlet-class>com.hand.servlet.GetCusListServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>LogOutServlet</servlet-name>
+		<servlet-class>com.hand.servlet.LogOutServlet</servlet-class>
+	</servlet>
 	
+	<servlet-mapping>
+		<servlet-name>LogOutServlet</servlet-name>
+		<url-pattern>/LogOutServlet</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GetCusListServlet</servlet-name>
 		<url-pattern>/GetCusListServlet</url-pattern>

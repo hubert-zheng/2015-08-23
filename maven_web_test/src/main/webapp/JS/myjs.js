@@ -25,7 +25,7 @@ $(document).ready(function(){
 		page_num =parseInt(page_num)+1;
 		//console.log(page_num);
 		//alert("pn:"+pn);
-		alert(page_num);
+		//alert(page_num);
 		getJson(page_num);
 	});
 	

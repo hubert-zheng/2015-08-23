@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.google.gson.internal.bind.SqlDateTypeAdapter;
 import com.hand.Bean.Customer;
 import com.hand.Bean.User;
 
@@ -15,4 +16,10 @@ public interface CustomerDao {
 	public ResultSet getcustomercount(Connection conn)throws SQLException;
 
 	public ResultSet getCustomerListStart(Connection conn,int start)throws SQLException;
+	//删除客户主要信息
+	public boolean deleteCustomer(Connection conn,Customer cus)throws SQLException;
+	//删除客户信息外键关联表1payment
+	public boolean deleteCusWithPayment(Connection conn,Customer cus)throws SQLException;
+	//删除客户信息外键关联标2rental
+	public boolean deleteCusWithRental(Connection conn,Customer cus)throws SQLException;
 }
