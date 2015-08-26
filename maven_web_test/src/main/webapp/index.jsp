@@ -80,12 +80,12 @@
                     
                     %>
                     <tr>
-                        <td><a>编辑</a>|<a>删除</a></td>
+                        <td><a href="#" class="edit">编辑</a>|<a href="#" class="del">删除</a></td>
                         <td><%=cuslist.get(i).getFirst_Name()%></td>
                         <td><%=cuslist.get(i).getLast_Name()%></td>
                         <td><%=cuslist.get(i).getAddress() %></td>
                         <td><%=cuslist.get(i).getEmail() %></td>
-                        <td><%=cuslist.get(i).getCustomer_id() %></td>
+                        <td class="cus_id"><%=cuslist.get(i).getCustomer_id() %></td>
                         <td><%=cuslist.get(i).getLastUpdate() %></td>
                     </tr>
                     <%	

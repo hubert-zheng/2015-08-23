@@ -17,9 +17,9 @@ public interface CustomerDao {
 
 	public ResultSet getCustomerListStart(Connection conn,int start)throws SQLException;
 	//删除客户主要信息
-	public boolean deleteCustomer(Connection conn,Customer cus)throws SQLException;
+	public int deleteCustomer(Connection conn,Customer cus)throws SQLException;
 	//删除客户信息外键关联表1payment
-	public boolean deleteCusWithPayment(Connection conn,Customer cus)throws SQLException;
+	public int deleteCusWithPayment(Connection conn,Customer cus)throws SQLException;
 	//删除客户信息外键关联标2rental
-	public boolean deleteCusWithRental(Connection conn,Customer cus)throws SQLException;
+	public int deleteCusWithRental(Connection conn,Customer cus)throws SQLException;
 }

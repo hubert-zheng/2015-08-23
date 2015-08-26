@@ -34,20 +34,20 @@ public class CustomerDaoImpl implements CustomerDao{
 		ps.setString(2, cus.getLast_Name());
 		return ps.executeQuery();
 	}
-	public boolean deleteCustomer(Connection conn, Customer cus) throws SQLException {
+	public int deleteCustomer(Connection conn, Customer cus) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement("delete customer from customer where customer_id = ?;");
 		ps.setInt(1, cus.getCustomer_id());
-		return ps.execute();
+		return ps.executeUpdate();
 	}
-	public boolean deleteCusWithPayment(Connection conn, Customer cus) throws SQLException {
+	public int deleteCusWithPayment(Connection conn, Customer cus) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement("delete pay from customer as cus,payment as pay where cus.customer_id = pay.customer_id and cus.customer_id =?;");
 		ps.setInt(1, cus.getCustomer_id());
-		return ps.execute();
+		return ps.executeUpdate();
 	}
-	public boolean deleteCusWithRental(Connection conn, Customer cus) throws SQLException {
+	public int deleteCusWithRental(Connection conn, Customer cus) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement("delete ren from customer as cus,rental as ren where cus.customer_id = ren.customer_id and cus.customer_id =?;");
 		ps.setInt(1, cus.getCustomer_id());
-		return ps.execute();
+		return ps.executeUpdate();
 	}
 
 }

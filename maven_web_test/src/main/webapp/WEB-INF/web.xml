@@ -85,7 +85,15 @@
 		<servlet-name>LogOutServlet</servlet-name>
 		<servlet-class>com.hand.servlet.LogOutServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>DelCusServlet</servlet-name>
+		<servlet-class>com.hand.servlet.DelCusServlet</servlet-class>
+	</servlet>
 	
+	<servlet-mapping>
+		<servlet-name>DelCusServlet</servlet-name>
+		<url-pattern>/DelCusServlet</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>LogOutServlet</servlet-name>
 		<url-pattern>/LogOutServlet</url-pattern>

@@ -152,14 +152,14 @@ public class CustomerService {
 	}
 	//删除指定的客户信息
 	public boolean delCus(Customer cus){
-		boolean bool = false;
+		int result = 0;
 		try {
 			conn = ConnectionFactory.getInstance ().makeConnection ();
 			conn.setAutoCommit (false) ;
-			bool =  cusdao.deleteCusWithPayment(conn, cus);
-			bool = cusdao.deleteCusWithRental(conn, cus);
-			bool = cusdao.deleteCustomer(conn, cus);
-
+			result =  cusdao.deleteCusWithPayment(conn, cus);
+			result = cusdao.deleteCusWithRental(conn, cus);
+			result = cusdao.deleteCustomer(conn, cus);
+			conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace ();
 			try {
@@ -174,9 +174,8 @@ public class CustomerService {
 				e.printStackTrace ();
 			}
 		}
-		
-		
-		return bool;
+		if(result>0)return true;
+		else return false;
 	}
 	
 	

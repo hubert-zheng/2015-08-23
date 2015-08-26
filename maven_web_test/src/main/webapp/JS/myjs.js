@@ -61,12 +61,12 @@ $(document).ready(function(){
 							$.each(json,function(index,array){
 								//将数据插入到表格中
 								str += '<tr>';
-								str += '<td><a>编辑</a>|<a>删除</a></td>';
+								str += '<td><a href="#" class="edit">编辑</a>|<a href="#" class="del">删除</a></td>';
 								str += '<td>'+array.First_Name+'</td>';
 								str += '<td>'+array.Last_Name+'</td>';
 								str += '<td>'+array.Address+'</td>';
 								str += '<td>'+array.Email+'</td>';
-								str += '<td>'+array.customer_id+'</td>';
+								str += '<td class="cus_id">'+array.customer_id+'</td>';
 								str += '<td>'+array.LastUpdate+'</td>';
 								str += '</tr>';
 							});
@@ -81,9 +81,31 @@ $(document).ready(function(){
 		);
 	}
 	
-	
-	
-	
+	//点击列表的删除超链接
+	$(".usertable").find(".del").click(function(){
+		var $allListElements= $(this).parent();
+		var customer_id = $allListElements.siblings(".cus_id").text();
+		//alert(customer_id);
+		delCus(customer_id);
+	})
+	/*
+	 * 根据传入的Customer_id请求删除该用户信息
+	 */
+	function delCus(cus_id){
+		$.ajax({
+			url:server_context+"/DelCusServlet",
+			data:"cusid="+cus_id,
+			dataType:'json',
+			error:function(){console.log("ajax,error!")},
+			success:function(json)
+			{
+				console.log(json);
+				if(JSON.stringify(json)=="true"){alert("删除成功")}
+				else{alert("删除失败，请重新操作")}
+			
+			}
+		});
+	}
 	
 	
 })
