@@ -93,7 +93,25 @@
       </plugins>
     </pluginManagement>
 			
-		
+		<plugins>  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-surefire-plugin</artifactId>                   
+                <configuration>  
+                    <skip>true</skip>  
+                </configuration>  
+            </plugin>  
+        </plugins>  
+         <resources>  
+        <resource>  
+            <directory>src/main/resources</directory>  
+            <includes>  
+            <include>**/*.properties</include>  
+            <include>**/*.xml</include>  
+            </includes>  
+            <filtering>true</filtering>          
+        </resource>  
+    </resources>  
     
     
   </build>
